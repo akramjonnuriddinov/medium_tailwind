@@ -78,7 +78,8 @@ const actions = {
           resolve(response.data.user)
         })
         .catch((result) => {
-          commit('loginFailure', result)
+          commit('loginFailure', result.response.data.errors)
+          console.log(result.response.data.errors)
         })
     })
   }

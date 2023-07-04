@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul class="error-messages">
-      <li v-for="errorMessage in errorMessages" :key="errorMessage">
-        {{ errorMessage }}
+      <li>
+        {{ errorMessages }}
       </li>
     </ul>
   </div>
@@ -19,11 +19,12 @@ export default {
   },
   computed: {
     errorMessages() {
-      return Object.keys(this.validationErrors).map((name) => {
-        const message = this.validationErrors[name].join('')
-        return `${name} ${message}`
-      })
+      const errorType = Object.keys(this.validationErrors)
+      return `${errorType} ${this.validationErrors[errorType]}`
     }
+  },
+  mounted() {
+    console.log(this.validationErrors)
   }
 }
 </script>
